@@ -4,8 +4,8 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchtext.legacy.datasets import Multi30k,BucketIterator
-from torchtext.legacy.data import Field
+from torchtext.datasets import Multi30k
+from torchtext.legacy.data import Field,BucketIterator
 import numpy as np
 import spacy
 from torchtext.data import get_tokenizer
