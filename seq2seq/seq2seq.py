@@ -1,25 +1,34 @@
+# Successfully installed torch-1.8.0 torchtext-0.9.0
+# python -m spacy download de_core_news_sm
+# python -m spacy download en_core_web_sm    
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchtext.datasets import Multi30k
-from torchtext.data import Field, BucketIterator
+from torchtext.legacy.datasets import Multi30k,BucketIterator
+from torchtext.legacy.data import Field
 import numpy as np
 import spacy
+from torchtext.data import get_tokenizer
 import random
 from torch.utils.tensorboard import SummaryWriter  # to print to tensorboard
 from utils import translate_sentence, bleu, save_checkpoint, load_checkpoint
 
-spacy_ger = spacy.load("de")
-spacy_eng = spacy.load("en")
+# spacy_ger = spacy.load("de")
+# spacy_eng = spacy.load("en")
+ger_nlp = spacy.load("de_core_news_sm")
+eng_nlp = spacy.load('en_core_web_sm')
 
 
 def tokenize_ger(text):
-    return [tok.text for tok in spacy_ger.tokenizer(text)]
+    return [tok.text for tok in ger_nlp(text)]
 
 
 def tokenize_eng(text):
-    return [tok.text for tok in spacy_eng.tokenizer(text)]
+    return [tok.text for tok in eng_nlp(text)]
 
+sentence = "You can now install TorchText using pip!"
+tokens = tokenize_eng(sentence)
+print(tokens)
 
 german = Field(tokenize=tokenize_ger, lower=True, init_token="<sos>", eos_token="<eos>")
 
@@ -27,8 +36,12 @@ english = Field(
     tokenize=tokenize_eng, lower=True, init_token="<sos>", eos_token="<eos>"
 )
 
+data_path = 'seq2seq/data'
+
 train_data, valid_data, test_data = Multi30k.splits(
-    exts=(".de", ".en"), fields=(german, english)
+    exts=(".de", ".en"),
+    fields=(('src',german), ('trg',english)),
+    root=data_path
 )
 
 german.build_vocab(train_data, max_size=10000, min_freq=2)
