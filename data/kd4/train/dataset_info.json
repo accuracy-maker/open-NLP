@@ -1,0 +1,45 @@
+{
+  "builder_name": "kde4",
+  "citation": "@InProceedings{TIEDEMANN12.463,\n  author = {J{\"o}rg Tiedemann},\n  title = {Parallel Data, Tools and Interfaces in OPUS},\n  booktitle = {Proceedings of the Eight International Conference on Language Resources and Evaluation (LREC'12)},\n  year = {2012},\n  month = {may},\n  date = {23-25},\n  address = {Istanbul, Turkey},\n  editor = {Nicoletta Calzolari (Conference Chair) and Khalid Choukri and Thierry Declerck and Mehmet Ugur Dogan and Bente Maegaard and Joseph Mariani and Jan Odijk and Stelios Piperidis},\n  publisher = {European Language Resources Association (ELRA)},\n  isbn = {978-2-9517408-7-7},\n  language = {english}\n }\n",
+  "config_name": "en-fr",
+  "dataset_name": "kde4",
+  "dataset_size": 25650145,
+  "description": "A parallel corpus of KDE4 localization files (v.2).\n\n92 languages, 4,099 bitexts\ntotal number of files: 75,535\ntotal number of tokens: 60.75M\ntotal number of sentence fragments: 8.89M\n",
+  "download_checksums": {
+    "https://object.pouta.csc.fi/OPUS-KDE4/v2/moses/en-fr.txt.zip": {
+      "num_bytes": 7049364,
+      "checksum": null
+    }
+  },
+  "download_size": 7049364,
+  "features": {
+    "id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "translation": {
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "_type": "Translation"
+    }
+  },
+  "homepage": "http://opus.nlpl.eu/KDE4.php",
+  "license": "",
+  "size_in_bytes": 32699509,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 25650145,
+      "num_examples": 210173,
+      "dataset_name": "kde4"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

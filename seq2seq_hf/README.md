@@ -1,0 +1,1 @@
+I found that many turorials of machine translation using multi30k and torchtext are confused and there are a lot of bugs due to versions changing. So I decide to implement the seq2seq model using huggging face, which is a very popular tool at present.
